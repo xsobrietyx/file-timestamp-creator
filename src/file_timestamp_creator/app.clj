@@ -4,31 +4,30 @@
            (java.io File))
   (:gen-class))
 
-;; Current time
 (def ^LocalDateTime curr-time (LocalDateTime.))
 
-;; Custom date format
 (def ^String custom-format "-yyyy-MM-dd_HH:mm:ss")
 
-;; Regex dot
 (def regex-dot #"\.")
 
-;; Filename prefix
 (def filename-prefix (. curr-time toString custom-format))
 
-;; File or folder predicate
-(defn file-or-dir? ^Boolean [^String arg-name] (empty? (re-seq regex-dot arg-name)))
+(defn file-or-dir? ^Boolean [^String arg-name]
+  "File or folder predicate. Folders -> true, files -> false"
+  (empty? (re-seq regex-dot arg-name)))
 
-;; Create file/folder name
-(defn assemble-filename ^String [^String n] (if (file-or-dir? n)
-                              (str n filename-prefix)
-                                                 (let [parts (str/split n regex-dot)]
-                                                   (str (first parts) filename-prefix "." (first (rest parts))))))
+(defn assemble-filename ^String [^String n]
+  "Generate file/folder name"
+  (if (file-or-dir? n)
+    (str n filename-prefix)
+    (let [parts (str/split n regex-dot)]
+      (str (first parts) filename-prefix "." (first (rest parts))))))
 
-;; Creates file or folder
-(defn create-file-or-dir [^String n] (if (file-or-dir? n)
-                               (.mkdir (File. (assemble-filename n)))
-                                                  (.createNewFile (File. (assemble-filename n)))))
+(defn create-file-or-dir [^String n]
+  "Creates file or folder in current path"
+  (if (file-or-dir? n)
+    (.mkdir (File. (assemble-filename n)))
+    (.createNewFile (File. (assemble-filename n)))))
 
 (defn -main [& args] (dorun (map create-file-or-dir args)))
 ;;TODO: add unit tests
