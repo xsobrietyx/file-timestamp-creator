@@ -4,11 +4,11 @@ Small utility that helps user to create timestamped files and folders on linux b
 
 ## Usage
 
-    - download and install JRE
-    - download sources
-    - open SOURCES_FOLDER
+    - Download and install JRE
+    - Download sources
+    - Open SOURCES_FOLDER
     - $ lein uberjar
-    - copy JAR (prefixed as standalone) from the SOURCES_FOLDER/target to the speceific folder on your lunix-based pc
+    - Copy JAR (prefixed as standalone) from the SOURCES_FOLDER/target to the speceific folder on your lunix-based PC
     - Create alias (better to place it to your ~/.bashrc or ~/.zshrc and do not forget to source the file):
         $ alias ccf='java -jar /YOUR_JAR_LOCATION/file-creator.jar'
     - $ ccf file-name* -> will create file(s)/folder(s). Depends on file names.
