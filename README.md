@@ -9,12 +9,14 @@ Small utility that helps user to create timestamped files and folders on linux b
     - open SOURCES_FOLDER
     - $ lein uberjar
     - copy JAR (prefixed as standalone) from the SOURCES_FOLDER/target to the speceific folder on your lunix-based pc
-    - Create alias (better to place it to your ~/.bashrc or ~/.zshrc): $ alias ccf='java -jar /YOUR_JAR_LOCATION/file-creator.jar'
+    - Create alias (better to place it to your ~/.bashrc or ~/.zshrc and do not forget to source the file):
+        $ alias ccf='java -jar /YOUR_JAR_LOCATION/file-creator.jar'
     - $ ccf file-name* -> will create file(s)/folder(s). Depends on file names.
     
 ### Examples
 
-    $ ccf "hello.txt" some-folder -> will create hello-TIMESTAMP.txt and some-folder-TIMESTAMP in users current path
+    $ ccf "hello.txt" some-folder
+    -> will create hello-TIMESTAMP.txt and some-folder-TIMESTAMP in users current path
 
 ## License
 

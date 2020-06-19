@@ -16,18 +16,18 @@
   "File or folder predicate. Folders -> true, files -> false"
   (empty? (re-seq regex-dot arg-name)))
 
-(defn assemble-filename ^String [^String n]
+(defn assemble-filename ^String [^String name]
   "Generate file/folder name"
-  (if (file-or-dir? n)
-    (str n filename-prefix)
-    (let [parts (str/split n regex-dot)]
+  (if (file-or-dir? name)
+    (str name filename-prefix)
+    (let [parts (str/split name regex-dot)]
       (str (first parts) filename-prefix "." (first (rest parts))))))
 
-(defn create-file-or-dir [^String n]
+(defn create-file-or-dir [^String name]
   "Creates file or folder in current path"
-  (if (file-or-dir? n)
-    (.mkdir (File. (assemble-filename n)))
-    (.createNewFile (File. (assemble-filename n)))))
+  (if (file-or-dir? name)
+    (.mkdir (File. (assemble-filename name)))
+    (.createNewFile (File. (assemble-filename name)))))
 
 (defn -main [& args] (dorun (map create-file-or-dir args)))
 ;;TODO: add unit tests
