@@ -20,3 +20,5 @@
     (is (= (count (re-seq #"-(\d){4}-(\d){2}-(\d){2}_(\d){2}:(\d){2}:(\d){2}" (assemble-filename "Temporary"))) 1)))
   (testing "Correct EOF of file."
     (is (= (count (re-seq #".pdf" (assemble-filename "report.pdf"))) 1))))
+
+;;TODO: add test to check whether files and folder are created on local FS.
