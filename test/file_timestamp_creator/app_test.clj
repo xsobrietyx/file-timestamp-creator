@@ -25,5 +25,3 @@
         "File/folder that was created should be deleted manually after.")
     (is (true? (create-file-or-dir "ResourcesFolder"))
         "File/folder that was created should be deleted manually after.")))
-
-;;TODO: add test to check whether files and folder are created on local FS.
