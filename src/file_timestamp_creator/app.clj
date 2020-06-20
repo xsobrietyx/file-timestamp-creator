@@ -27,5 +27,4 @@
     (.createNewFile (File. (assemble-filename name)))))
 
 (defn -main [& args] (dorun (map create-file-or-dir args)))
-;;TODO: add unit tests
 ;;TODO: revise *.md files
