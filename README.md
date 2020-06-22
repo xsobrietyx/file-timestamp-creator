@@ -4,7 +4,7 @@ Small utility that helps user to create timestamped files and folders on linux b
 
 ## Usage
    ### Case A, build by yourself
-    - Download and install JRE
+    - Download and install JDK
     - Download and install Leiningen
     - Download sources
     - Open SOURCES_FOLDER
@@ -20,6 +20,11 @@ Small utility that helps user to create timestamped files and folders on linux b
 
     $ ccf hello.txt some-folder
     -> will create hello-TIMESTAMP.txt and some-folder-TIMESTAMP in users current path
+    In negative cases:
+    $ ccf hello.txt.abc
+    $ ccf .bashrc
+    -> You will receive message:
+    File names with more than one dot is not allowed. Please enter a valid file/folder name.
 
 ## License
 

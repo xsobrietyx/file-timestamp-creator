@@ -20,8 +20,9 @@
     (is (= (count (re-seq #"-(\d){4}-(\d){2}-(\d){2}_(\d){2}:(\d){2}:(\d){2}" (assemble-filename "Temporary"))) 1)))
   (testing "Correct EOF."
     (is (= (count (re-seq #".pdf" (assemble-filename "report.pdf"))) 1)))
-  (testing "Existence of created files"
+  (testing "Existence of created files."
     (is (true? (create-file-or-dir "test.log"))
         "File/folder that was created should be deleted manually after.")
     (is (true? (create-file-or-dir "ResourcesFolder"))
         "File/folder that was created should be deleted manually after.")))
+;;TODO: cover first-dot? and valid-name? predicates with unit tests
