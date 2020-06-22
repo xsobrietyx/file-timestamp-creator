@@ -18,13 +18,18 @@ Small utility that helps user to create timestamped files and folders on linux b
     
 ### Examples
 
+    Positive cases:
     $ ccf hello.txt some-folder
     -> will create hello-TIMESTAMP.txt and some-folder-TIMESTAMP in users current path
-    In negative cases:
+    Negative cases:
     $ ccf hello.txt.abc
     $ ccf .bashrc
     -> You will receive message:
-    File names with more than one dot is not allowed. Please enter a valid file/folder name.
+    File names with more than one dot is not allowed. Please enter a valid file/folder name. Wrong name: WRONG_FILE_NAME
+    Trailing dot is not allowed.
+    Mixed cases:
+    $ ccf notes.txt .bashrc
+    -> Files with correct names will be created. Wrong filenames will cause exception messages.
 
 ## License
 

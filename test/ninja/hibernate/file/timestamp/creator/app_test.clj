@@ -1,12 +1,24 @@
-(ns file-timestamp-creator.app-test
+(ns ninja.hibernate.file.timestamp.creator.app-test
   (:require [clojure.test :refer :all]
-            [file-timestamp-creator.app :refer :all]))
+            [ninja.hibernate.file.timestamp.creator.app :refer :all]))
 
 (deftest file-or-dir?-test
   (testing "File case, should be evaluated to false."
     (is (= (file-or-dir? "hello-world.txt") false)))
   (testing "Folder case, should be evaluated to true."
     (is (= (file-or-dir? "Folder-name") true))))
+
+(deftest first-dot?-test
+  (testing "Generic case."
+    (is (= (first-dot? ".bashrc") true) "Should be true because of trailing dot.")
+    (is (= (first-dot? "autoexec.bat") false) "Should be false.")))
+
+(deftest valid-name?-test
+  (testing "Generic case."
+    (is (= (valid-name? ".zshrc") false) "Should be false because of trailing dot.")
+    (is (= (valid-name? "initial.ddl.tmp") false) "Should be false because of multiple dots.")
+    (is (= (valid-name? "command.com") true) "Should be true.")
+    (is (= (valid-name? "bin") true) "Should be true.")))
 
 (deftest assemble-filename-test
   (testing "Generic case, should be evaluated to name that contains initial name."
@@ -25,4 +37,3 @@
         "File/folder that was created should be deleted manually after.")
     (is (true? (create-file-or-dir "ResourcesFolder"))
         "File/folder that was created should be deleted manually after.")))
-;;TODO: cover first-dot? and valid-name? predicates with unit tests

@@ -5,8 +5,7 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.1"]
                  ;; https://mvnrepository.com/artifact/joda-time/joda-time
-                 [joda-time/joda-time "2.10.6"]
-                 ]
-  :main file-timestamp-creator.app
-  :aot [file-timestamp-creator.app]
-  :repl-options {:init-ns file-timestamp-creator.app})
+                 [joda-time/joda-time "2.10.6"]]
+  :main ninja.hibernate.file.timestamp.creator.app
+  :aot [ninja.hibernate.file.timestamp.creator.app]
+  :repl-options {:init-ns ninja.hibernate.file.timestamp.creator.app})
