@@ -47,4 +47,3 @@ Please enter a valid file/folder name. Wrong name: ")
       )))
 
 (defn -main [& args] (dorun (map create-file-or-dir args)))
-;;TODO: revise *.md files
