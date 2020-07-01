@@ -14,8 +14,11 @@ Small utility that helps user to create timestamped files and folders on linux b
         $ alias ccf='java -jar /YOUR_JAR_LOCATION/UBERJAR_NAME.jar'
     - $ ccf file-name* -> will create file(s)/folder(s). Depends on file names.
    ### Case B, download executable jar
-    - TBD
-    
+    - Download uberjar from /bin folder
+    - Copy JAR (prefixed as standalone) from the SOURCES_FOLDER/target to the speceific folder on your lunix-based PC
+    - Create alias (better to place it to your ~/.bashrc or ~/.zshrc and do not forget to source the file):
+        $ alias ccf='java -jar /YOUR_JAR_LOCATION/UBERJAR_NAME.jar'
+    - $ ccf file-name* -> will create file(s)/folder(s). Depends on file names.
 ### Examples
 
     Positive cases:

@@ -8,4 +8,6 @@
                  [joda-time/joda-time "2.10.6"]]
   :main ninja.hibernate.file.timestamp.creator.app
   :aot [ninja.hibernate.file.timestamp.creator.app]
-  :repl-options {:init-ns ninja.hibernate.file.timestamp.creator.app})
+  :repl-options {:init-ns ninja.hibernate.file.timestamp.creator.app}
+  :uberjar-name "file-creator-stadalone-%s.jar"
+  :target-path "target/%s/")
