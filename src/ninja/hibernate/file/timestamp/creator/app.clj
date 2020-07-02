@@ -1,7 +1,7 @@
 (ns ninja.hibernate.file.timestamp.creator.app
   (:require [clojure.string :as str])
   (:import (org.joda.time LocalDateTime)
-           (java.io File))
+           (java.io File FilenameFilter))
   (:gen-class))
 
 (def regex-dot #"\.")
@@ -45,5 +45,23 @@ Please enter a valid file/folder name. Wrong name: ")
         (.createNewFile (File. ^String new-name)))
       identity
       )))
+
+(defn remove-files-by-name [prefix]
+  "Removes files/folders by prefix supplied. Created only for test usage purposes."
+  (let
+    [filter (fn [prefix]
+              (
+                reify FilenameFilter
+                (accept [_ _ name]
+                  (.startsWith name prefix))
+                ))]
+    (loop [files-to-remove (seq (.list (File. ".") (filter prefix)))]
+      (if (nil? (first files-to-remove))
+        (format "Removed files/folders with prefix %s successfully." prefix)
+        (do
+          (.delete (File. ^String (first files-to-remove)))
+          (recur (rest files-to-remove)))
+        ))
+    ))
 
 (defn -main [& args] (dorun (map create-file-or-dir args)))

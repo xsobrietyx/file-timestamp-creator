@@ -33,7 +33,9 @@
   (testing "Correct EOF."
     (is (= (count (re-seq #".pdf" (assemble-filename "report.pdf"))) 1)))
   (testing "Existence of created files."
-    (is (true? (create-file-or-dir "test.log"))
-        "File/folder that was created should be deleted manually after.")
-    (is (true? (create-file-or-dir "ResourcesFolder"))
-        "File/folder that was created should be deleted manually after.")))
+    (def pref "test-resources-")
+    (is (true? (create-file-or-dir (str pref "File.log")))
+        "File/folder that was created will be deleted automatically after tests run.")
+    (is (true? (create-file-or-dir (str pref "Folder")))
+        "File/folder that was created will be deleted automatically after tests run.")
+    (is (= (remove-files-by-name pref) "Removed files/folders with prefix test-resources- successfully."))))
