@@ -64,4 +64,16 @@ Please enter a valid file/folder name. Wrong name: ")
         ))
     ))
 
-(defn -main [& args] (dorun (map create-file-or-dir args)))
+(def help-message "usage:
+<alias> [<fileNames/dirNames>]
+Additional commands and options will be added soon.")
+
+(defn print-help [] (println help-message))
+
+(defmulti arguments-check
+          "Checking whether we should show help message or proceed with main application flow."
+          (fn [args] (empty? args)))
+(defmethod arguments-check true [_] (print-help))
+(defmethod arguments-check false [args] (dorun (map create-file-or-dir args)))
+
+(defn -main [& args] (arguments-check args))
