@@ -32,8 +32,8 @@
                "IllegalArgumentException: ")))))
 
 (def exception-msg
-"File name with multiple/trailing dot(s) is not allowed.
-Please enter a valid file/folder name. Wrong name: ")
+  "File name with multiple/trailing dot(s) is not allowed.
+  Please enter a valid file/folder name. Wrong name: ")
 
 (defn create-file-or-dir [^String name]
   "Creates file or folder in current path."
@@ -50,8 +50,7 @@ Please enter a valid file/folder name. Wrong name: ")
   "Removes files/folders by prefix supplied. Created only for test usage purposes."
   (let
     [filter (fn [prefix]
-              (
-                reify FilenameFilter
+              (reify FilenameFilter
                 (accept [_ _ name]
                   (.startsWith name prefix))
                 ))]
