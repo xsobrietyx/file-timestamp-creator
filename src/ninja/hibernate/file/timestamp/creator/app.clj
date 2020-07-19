@@ -76,3 +76,4 @@ Additional commands and options will be added soon.")
 (defmethod arguments-check false [args] (dorun (map create-file-or-dir args)))
 
 (defn -main [& args] (arguments-check args))
+;;TODO: add specs-alpha specs for data checks and generative testing
