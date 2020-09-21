@@ -14,9 +14,13 @@
   "Function to check for trailing dot."
   (= (first (for [[idx elt] (map-indexed vector name) :when (#{\.} elt)] idx)) 0))
 
+(defn last-dot? ^Boolean [^String name]
+  "Function to check name that ends with dot."
+  (= (first (for [[idx elt] (map-indexed vector (reverse name)) :when (#{\.} elt)] idx)) 0))
+
 (defn valid-name? ^Boolean [^String name]
   "Validates whether file name entered has only one dot or less."
-  (and (not (first-dot? name)) (<= (count (re-seq regex-dot name)) 1)))
+  (and (and (not (first-dot? name)) (not (last-dot? name))) (<= (count (re-seq regex-dot name)) 1)))
 
 (defn assemble-filename ^String [^String name]
   "Generate file/folder name."

@@ -9,13 +9,19 @@
     (is (= (file-or-dir? "Folder-name") true))))
 
 (deftest first-dot?-test
-  (testing "Generic case."
+  (testing "Testing whether supplied name starts with a dot."
     (is (= (first-dot? ".bashrc") true) "Should be true because of trailing dot.")
     (is (= (first-dot? "autoexec.bat") false) "Should be false.")))
+
+(deftest last-dot?-test
+  (testing "Testing whether supplied name ends with a dot."
+    (is (= (last-dot? "somePicture.") true) "Should be true because name ends with dot.")
+    (is (= (last-dot? "command.com") false) "Should be false.")))
 
 (deftest valid-name?-test
   (testing "Generic case."
     (is (= (valid-name? ".zshrc") false) "Should be false because of trailing dot.")
+    (is (= (valid-name? "picture.") false) "Should be false because of ending with dot.")
     (is (= (valid-name? "initial.ddl.tmp") false) "Should be false because of multiple dots.")
     (is (= (valid-name? "command.com") true) "Should be true.")
     (is (= (valid-name? "bin") true) "Should be true.")))
