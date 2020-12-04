@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/xsobrietyx/file-timestamp-creator.svg?branch=master)](https://travis-ci.com/xsobrietyx/file-timestamp-creator)
+
 # Description
 
 Small utility that helps user to create timestamped files and folders on linux based machine.
