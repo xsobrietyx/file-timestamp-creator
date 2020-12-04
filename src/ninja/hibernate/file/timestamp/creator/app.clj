@@ -16,7 +16,7 @@
 
 (defn last-dot? ^Boolean [^String name]
   "Function to check name that ends with dot."
-  (= (first (for [[idx elt] (map-indexed vector (reverse name)) :when (#{\.} elt)] idx)) 0))
+  (first-dot? (reverse name)))
 
 (defn valid-name? ^Boolean [^String name]
   "Validates whether file name entered has only one dot or less."
